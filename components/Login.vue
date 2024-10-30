@@ -33,7 +33,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
     </UFormGroup>
 
     <UButton type="submit">
-      Submit
+      Login
     </UButton>
   </UForm>
 </template>
