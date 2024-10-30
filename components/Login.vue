@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { object, string, type InferType } from 'yup'
 import type { FormSubmitEvent } from '#ui/types'
-
+const auth = useSupabaseClient().auth
 const schema = object({
   email: string().email('Email inválido').required('Requerido'),
   password: string()
@@ -18,7 +18,14 @@ const state = reactive({
 
 async function onSubmit(event: FormSubmitEvent<Schema>) {
   // Do something with event.data
-  console.log(event.data)
+  const {error} = await auth.signInWithPassword({
+            email: event.data.email,
+            password: event.data.password,
+        }) 
+    if(error)
+        console.log(error)
+    else
+        navigateTo('/');
 }
 </script>
 
