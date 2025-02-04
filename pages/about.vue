@@ -3,7 +3,7 @@
 
 <template>
   <div>
-    Page: index
+    Page: about
   </div>
 </template>
 
